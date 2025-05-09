@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css'
 
 import Home from './pages/Home'
 import Orders from './pages/Orders'
+import Suppliers from './pages/Suppliers'
 import NotFound from './pages/NotFound' 
 
 function App() {
@@ -63,6 +64,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/orders" element={<Orders />} />
+          <Route path="/suppliers" element={<Suppliers />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

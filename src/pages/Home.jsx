@@ -26,6 +26,8 @@ function Home() {
     if (tab === 'orders') {
       // Navigate to orders page
       navigate('/orders');
+    } else if (tab === 'suppliers') {
+      navigate('/suppliers');
     } else {
       setActiveTab(tab);
     }
