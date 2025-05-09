@@ -1,15 +1,16 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import MainFeature from '../components/MainFeature';
 import getIcon from '../utils/iconUtils';
 
 function Home() {
   const [activeTab, setActiveTab] = useState('inventory');
+  const navigate = useNavigate();
   
   // Define icons at the top of the component
   const LayoutDashboardIcon = getIcon('LayoutDashboard');
   const PackageIcon = getIcon('Package');
   const ShoppingCartIcon = getIcon('ShoppingCart');
-  const TruckIcon = getIcon('Truck');
   const BarChartIcon = getIcon('BarChart');
   
   // Dashboard stats data
@@ -20,6 +21,18 @@ function Home() {
     { id: 4, title: 'Total Value', value: '$45,289', change: '+15%', icon: 'DollarSign', color: 'bg-green-500' },
   ];
 
+  // Handle tab changes
+  const handleTabChange = (tab) => {
+    if (tab === 'orders') {
+      // Navigate to orders page
+      navigate('/orders');
+    } else {
+      setActiveTab(tab);
+    }
+  };
+
+  const TruckIcon = getIcon('Truck');
+
   return (
     <div className="space-y-6">
       <div className="flex flex-col md:flex-row gap-6">
@@ -29,7 +42,7 @@ function Home() {
             <nav className="space-y-1">
               <button 
                 className={`flex items-center w-full px-3 py-3 rounded-lg transition-colors ${activeTab === 'dashboard' ? 'bg-primary/10 text-primary dark:bg-primary/20' : 'hover:bg-surface-100 dark:hover:bg-surface-700'}`}
-                onClick={() => setActiveTab('dashboard')}
+                onClick={() => handleTabChange('dashboard')}
               >
                 <span className="mr-3">
                   <LayoutDashboardIcon size={20} />
@@ -39,7 +52,7 @@ function Home() {
               
               <button 
                 className={`flex items-center w-full px-3 py-3 rounded-lg transition-colors ${activeTab === 'inventory' ? 'bg-primary/10 text-primary dark:bg-primary/20' : 'hover:bg-surface-100 dark:hover:bg-surface-700'}`}
-                onClick={() => setActiveTab('inventory')}
+                onClick={() => handleTabChange('inventory')}
               >
                 <span className="mr-3">
                   <PackageIcon size={20} />
@@ -49,7 +62,7 @@ function Home() {
               
               <button 
                 className={`flex items-center w-full px-3 py-3 rounded-lg transition-colors ${activeTab === 'orders' ? 'bg-primary/10 text-primary dark:bg-primary/20' : 'hover:bg-surface-100 dark:hover:bg-surface-700'}`}
-                onClick={() => setActiveTab('orders')}
+                onClick={() => handleTabChange('orders')}
               >
                 <span className="mr-3">
                   <ShoppingCartIcon size={20} />
@@ -59,7 +72,7 @@ function Home() {
               
               <button 
                 className={`flex items-center w-full px-3 py-3 rounded-lg transition-colors ${activeTab === 'suppliers' ? 'bg-primary/10 text-primary dark:bg-primary/20' : 'hover:bg-surface-100 dark:hover:bg-surface-700'}`}
-                onClick={() => setActiveTab('suppliers')}
+                onClick={() => handleTabChange('suppliers')}
               >
                 <span className="mr-3">
                   <TruckIcon size={20} />
@@ -69,7 +82,7 @@ function Home() {
               
               <button 
                 className={`flex items-center w-full px-3 py-3 rounded-lg transition-colors ${activeTab === 'reports' ? 'bg-primary/10 text-primary dark:bg-primary/20' : 'hover:bg-surface-100 dark:hover:bg-surface-700'}`}
-                onClick={() => setActiveTab('reports')}
+                onClick={() => handleTabChange('reports')}
               >
                 <span className="mr-3">
                   <BarChartIcon size={20} />
@@ -123,8 +136,8 @@ function Home() {
             <MainFeature />
           )}
           
-          {activeTab === 'orders' && (
-            <div className="space-y-6">
+              <h2 className="text-2xl font-bold mt-4">Orders</h2>
+              <div className="card neu-shadow mt-4">
               <h2 className="text-2xl font-bold">Orders</h2>
               <div className="card neu-shadow">
                 <p className="text-surface-500">Orders management coming soon</p>
