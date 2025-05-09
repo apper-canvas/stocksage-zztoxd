@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -31,15 +31,17 @@ function App() {
     <div className="min-h-screen bg-surface-50 dark:bg-surface-900 text-surface-800 dark:text-surface-100 transition-colors duration-200">
       <header className="sticky top-0 z-10 bg-white dark:bg-surface-800 shadow-sm">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            <img 
-              src="https://images.unsplash.com/photo-1586892477838-2b96e85e0f96?q=80&w=40&h=40&auto=format&fit=crop" 
-              alt="StockSage Logo" 
-              className="w-8 h-8 rounded-md"
-            />
-            <h1 className="text-xl font-bold text-primary">
-              Stock<span className="text-secondary">Sage</span>
-            </h1>
+          <div>
+            <Link to="/" className="flex items-center gap-2 hover:opacity-90 transition-opacity">
+              <img 
+                src="https://images.unsplash.com/photo-1586892477838-2b96e85e0f96?q=80&w=40&h=40&auto=format&fit=crop" 
+                alt="StockSage Logo" 
+                className="w-8 h-8 rounded-md"
+              />
+              <h1 className="text-xl font-bold text-primary">
+                Stock<span className="text-secondary">Sage</span>
+              </h1>
+            </Link>
           </div>
           <button 
             onClick={toggleDarkMode}
